@@ -1,0 +1,309 @@
+% abtex2-modelo-artigo.tex, v-1.9.2 laurocesar
+% Copyright 2012-2014 by abnTeX2 group at http://abntex2.googlecode.com/ 
+%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Artigo Acadêmico em conformidade com
+% ABNT NBR 6022:2003: Informação e documentação - Artigo em publicação 
+% periódica científica impressa - Apresentação
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+	% -- opções da classe memoir --
+	article,			% indica que é um artigo acadêmico
+	12pt,				% tamanho da fonte
+	oneside,			% para impressão apenas no verso. Oposto a twoside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE % títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	sumario=tradicional
+	]{abntex2}
+
+
+% ---
+% PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl} 			% Lista de simbolos
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+		
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+		
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+% ---
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Revisão de Genética do Comportmanto Animal}
+\autor{Josiel Patricio Pereira de Oliveira}
+\local{ UFRN, Brasil}
+%\data{2018}
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={Modelo de artigo científico com abnTeX2},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{atigo científico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ---
+% Altera as margens padrões
+% ---
+\setlrmarginsandblock{3cm}{3cm}{*}
+\setulmarginsandblock{3cm}{3cm}{*}
+\checkandfixthelayout
+% ---
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% Espaçamento simples
+\SingleSpacing
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+
+%---
+%
+% Se desejar escrever o artigo em duas colunas, descomente a linha abaixo
+% e a linha com o texto ``FIM DE ARTIGO EM DUAS COLUNAS''.
+% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
+%
+%---
+% página de titulo
+\maketitle
+
+% resumo em português
+\begin{resumoumacoluna}
+
+Este trabalho tem como objetivo ser uma revisão sobre os conteúdos ministrados na disciplina "Genética do Comportamento Animal". Disciplina desenvolvida ao longo do tempo motivada pela vontade do homem de entender o comportamento e os mecanismos biológicos com ele envolvidos. Entender a influência da genética e do meio e o quanto cada um interfere na expressão do comportamento.
+ %Conforme a ABNT NBR 6022:2003, o resumo é elemento obrigatório, constituído de  uma sequência de frases concisas e objetivas e não de uma simples enumeração  de tópicos, não ultrapassando 250 palavras, seguido, logo abaixo, das palavras  representativas do conteúdo do trabalho, isto é, palavras-chave e/ou  descritores, conforme a NBR 6028. (\ldots) As palavras-chave devem figurar logo  abaixo do resumo, antecedidas da expressão Palavras-chave:, separadas entre si por ponto e finalizadas também por ponto.
+ 
+ \vspace{\onelineskip}
+ 
+ \noindent
+ \textbf{Palavras-chaves}: genética do comportamento. comportamento animal.
+\end{resumoumacoluna}
+
+% ]  				% FIM DE ARTIGO EM DUAS COLUNAS
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ----------------------------------------------------------
+% Introdução
+% ----------------------------------------------------------
+\section{Introdução}
+\label{intro}
+\addcontentsline{toc}{section}{Introdução}
+Algumas reflexões importantes que visam ser respondidas pelo estudo da genética do comportamento animal são levantadas por Kandel já no prefácio de sua obra "Principles of neural science" como, por exemplo: O que os genes contribuem para o comportamento e como a expressão gênica nas células nervosas é regulada pelos processos de desenvolvimento e aprendizado? Como a experiência altera a forma como o cérebro processa eventos subsequentes e até que ponto esse processamento é inconsciente?
+
+Durante a segunda metade do século XX, o foco central da biologia estava no gene. Agora, na primeira metade do século XXI, o foco central da biologia mudou para a ciência neural e especificamente para a biologia da mente.
+\cite{kandel2000principles} Ao longo dessa revisão serão abordados temas que visam explicar melhor questões de interações genética-ambiente-comportamento.
+% ----------------------------------------------------------
+% Seção de explicações
+% ----------------------------------------------------------
+\section{Assuntos apresentados em aulas}
+\label{aulas}
+A genética do comportamental visa compreender os mecanismos genéticos que permitem ao sistema nervoso direcionar interações apropriadas entre os organismos e seus ambientes sociais e físicos, demonstrando seu caráter multidisciplinar.
+As primeiras explorações científicas do comportamento animal definiram os campos da  psicologia do comportamento e da etologia clássica \cite{anholt2009principles}.
+É importante lembrar que a expressão do comportamento não está assossiado únicamente a movimento, mas a toda forma de expressão pelo animal. Por exemplo a bioluminescência de vaga-lumes (lampirídeos), pirilampos (elaterídeos) e bondinhos (fengodídeos).
+
+
+Enquanto disciplina, resulta da união das disciplinas de estudos do comportamento como  psicologia do comportamento e da etologia clássica com biologia evolutiva e genética, e também incorpora aspectos da neurociência.
+
+
+A psicologia experimental é marcada pelas experiências do russo Igor Pavlov, o qual realizou experiências com cães e pode ver o condicionamente da salivação a partir de estímulos auditivos e visuais. Pavlov chamou esse comportamento condicionado dos cães de \textbf{reflexos condicionais} referidos como \textbf{condicionamento clássico} ou \textbf{aprendizagem associativa}.
+
+
+Ao contrário dos estudos realizados em laboratórios, Konrad Lorenz e Karl von Frisch, e Nikolaas Tinbergen, começaram a aplicar abordagens experimentais a animais em seu habitat. Juntos, eles lançaram as bases para a etologia.% Essa abordagem tem a vantagem de observar o animal em seu próprio habitat. Suas abordagens experimentais pioneiras para descobrir princípios fundamentais que se aplicariam não apenas a uma única espécie foi tão relevante que lhes rendeu um Prêmio Nobel em 1973.
+%Lorenz notou e apresentou também a existência de comportamentos padrões fixos, comportamentos instintivos, como por exemplo os rituais de acasalamento ou aconstrução de ninhos de pássaros. Esses comportamentos  estereotipados são acionados por um mecanismo de liberação inato, que induz uma sequência fixa de eventos comportamentais.
+%Karl von Frisch mostrou esse comportamento a partir da dança da abelha que realiza uma sequência de manobras específicas como sinalização de que há alimento.
+Por eles foram apresentados comportamentos instintivos/ comportamentos padrões, como por exemplo rituais de acasalamento ou aconstrução de ninhos de pássaros ou a dança das abelhas.
+
+No campo da genética, no século XIX, surgem as primeiras ideias evolucionistas com Lamarck em 1809 propondo que mudanças benéficas adquiridas durante a vida de um organismo poderia ser passada para sua progênie e que, ao longo de sucessivas gerações, esse processo altera as características do organismo teoria do ``uso/desuso''. Posteriormente Darwin apresenta uma teria mais completa para a evolução das espécies complementada pela seleção natural.
+Gregor	Mendel descreve a lei da hereditariedade.Thomas Hunt Morgan demonstra o mapemento de cromossomos.
+
+Nas primeiras decadas do século XX são descobertos os neurotransmissores acetilcolina e adrenalina e passam a ser usados aparelhos eletrônicos para estudo da eletrofisiologia impulsionando os estudos em neurociência.
+
+O desenvolvimento de um organismo se dá basicamente pela influência de fatores inatos ao organismo e fatores ambientais no qual ocorre o desenvolvimento desse organismo. Richard Mulcaster usou o termo ``Nature through Nurture'' para ilustrar a interação dessas componentes, ``nature'' representa os fatores inatos e ``nurture'' os fatores ambientais.
+
+O componente biologica, isto é, a genética, é transferida dos progenitores para a prole por meio do DNA que, na espécie humana, é composto por 46 cromossomos, sendo passados 23 de cada progenitor.
+DNA  (Ácido Desoxirribonucleico) é uma molécula presente no núcleo das células de todos os seres vivos e que carrega toda a informação genética de um organismo. É formado por uma fita dupla em forma de espiral (dupla hélice).
+EStruturalmente o DNA e contituído por:
+\begin{enumerate}
+    
+    \item Bases Nitrogenadas – Adenina (A), Timina (T), Citosina (C) e Guanina (G);
+    \item Pentose – Um açúcar que apresenta moléculas formadas por cinco átomos de carbono;
+    \item Fosfato – um radical de ácido fosfórico.
+
+\end{enumerate}
+
+
+
+
+
+
+
+\section{Mutagênese e Transgênese}
+\label{mutagenesetransgenese}
+asdf
+
+\section{??? Estudo Dirigido}
+\label{...}
+asdf
+
+\section{Neurogenética da Atividade e do Sono}
+\label{neurogenetica}
+asdf
+
+\section{Genética das Interações Sociais}
+\label{geneticadasinteracoes}
+asdf
+
+\section{Genética do Aprendizado e Memória}
+\label{geneticadoaprendizado}
+asdf.
+
+\section{Genética dos Comportamentos de Vício e Evolução do Comportamento}
+\label{viciosecomportamento}
+
+Seção \ref{neurogenetica}
+
+% A norma ABNT NBR 6022:2003 não estabelece uma margem específica a ser utilizada no artigo científico. Dessa maneira, caso deseje alterar as margens, utilize os comandos abaixo:
+
+
+\bookmarksetup{startatroot}% 
+% ---
+% ---
+% Conclusão
+% ---
+\section*{Considerações finais}
+\addcontentsline{toc}{section}{Considerações finais}
+
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% ---
+% Título e resumo em língua estrangeira
+% ---
+
+% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
+
+% titulo em inglês
+
+% resumo em português
+
+% ]  				% FIM DE ARTIGO EM DUAS COLUNAS
+% ---
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{abntex2-modelo-references}
+
+
+
+\end{document}
